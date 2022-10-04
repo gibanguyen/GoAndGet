@@ -1,8 +1,15 @@
-import express from "express"
+import express, { Application, Request, Response } from "express"
 
-const app = express()
+require("./db/db")
 
+const app: Application = express()
 
 const port = process.env.PORT || 8000
 
-app.listen(port)
+app.get('/', (req: Request, res: Response) => {
+    res.send('Hello')
+})
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`)
+})
